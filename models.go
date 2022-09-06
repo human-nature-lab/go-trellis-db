@@ -31,3 +31,12 @@ type PreloadAction struct {
 	CreatedAt    LaravelNullTime `db:"created_at"`
 	DeletedAt    LaravelNullTime `db:"deleted_at"`
 }
+
+type Snapshot struct {
+	Id        string          `db:"id"`
+	FileName  string          `db:"file_name"`
+	Hash      string          `db:"hash"`
+	CreatedAt LaravelNullTime `db:"created_at"`
+	UpdatedAt LaravelNullTime `db:"updated_at"`
+	DeletedAt LaravelNullTime `db:"deleted_at"`
+}
