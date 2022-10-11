@@ -23,3 +23,21 @@ func (t *LaravelNullTime) Scan(val interface{}) (err error) {
 	t.Time, err = time.Parse(LARAVEL_FORMAT, s)
 	return
 }
+
+func (t *LaravelNullTime) UnmarshalJSON(d []byte) (err error) {
+	if d == nil {
+		t.Valid = false
+		return
+	}
+	s := strings.ReplaceAll(string(d), `"`, "")
+	if s == "null" {
+		t.Valid = false
+		return
+	}
+	if strings.HasPrefix(s, "0000") {
+		t.Valid = false
+		return
+	}
+	t.Time, err = time.Parse(LARAVEL_FORMAT, s)
+	return
+}

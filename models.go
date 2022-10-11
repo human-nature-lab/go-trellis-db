@@ -8,6 +8,18 @@ type Geo struct {
 	ParentId  string `db:"parent_id"`
 }
 
+type User struct {
+	Id       string
+	Username string
+	Name     string
+}
+
+type Token struct {
+	Id   string
+	Hash string
+	Exp  string
+}
+
 type Edge struct {
 	Id                 string          `db:"id"`
 	SourceRespondentId string          `db:"source_respondent_id"`
@@ -34,9 +46,9 @@ type PreloadAction struct {
 
 type Snapshot struct {
 	Id        string          `db:"id"`
-	FileName  string          `db:"file_name"`
+	FileName  string          `db:"file_name" json:"file_name"`
 	Hash      string          `db:"hash"`
-	CreatedAt LaravelNullTime `db:"created_at"`
-	UpdatedAt LaravelNullTime `db:"updated_at"`
-	DeletedAt LaravelNullTime `db:"deleted_at"`
+	CreatedAt LaravelNullTime `db:"created_at" json:"created_at"`
+	UpdatedAt LaravelNullTime `db:"updated_at" json:"updated_at"`
+	DeletedAt LaravelNullTime `db:"deleted_at" json:"deleted_at"`
 }

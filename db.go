@@ -1,10 +1,12 @@
 package go_trellis_db
 
 import (
+	"flag"
 	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
+	"github.com/wyattis/z/zconfig"
 )
 
 type Config struct {
@@ -12,6 +14,7 @@ type Config struct {
 }
 
 type DBConfig struct {
+	Driver   string `default:"mysql"`
 	Host     string `default:"localhost"`
 	Port     int    `default:"3306"`
 	Database string
@@ -20,6 +23,22 @@ type DBConfig struct {
 }
 
 func Connect(config DBConfig) (*sqlx.DB, error) {
-	url := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", config.Username, config.Password, config.Host, config.Port, config.Database)
-	return sqlx.Connect("mysql", url)
+	var url string
+	switch config.Driver {
+	case "mysql":
+		url = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", config.Username, config.Password, config.Host, config.Port, config.Database)
+	case "sqlite3":
+		url = config.Database
+	}
+	return sqlx.Connect(config.Driver, url)
+}
+
+func AutoConnect() (db *sqlx.DB, err error) {
+	envLoc := flag.String("env", ".env", "")
+	flag.Parse()
+	config := Config{}
+	if err = zconfig.New(zconfig.Defaults(), zconfig.Env(*envLoc, "/var/www/trellis-api/.env")).Apply(&config); err != nil {
+		return
+	}
+	return Connect(config.DB)
 }
