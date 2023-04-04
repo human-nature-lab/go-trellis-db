@@ -22,22 +22,26 @@ type DBConfig struct {
 	Password string
 }
 
-func Connect(config DBConfig) (*sqlx.DB, error) {
+func Connect(config DBConfig) (db *sqlx.DB, err error) {
 	var url string
 	switch config.Driver {
 	case "mysql":
-		url = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", config.Username, config.Password, config.Host, config.Port, config.Database)
+		url = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?sql_mode=''", config.Username, config.Password, config.Host, config.Port, config.Database)
 	case "sqlite3":
 		url = config.Database
 	}
-	return sqlx.Connect(config.Driver, url)
+	db, err = sqlx.Connect(config.Driver, url)
+	if err != nil {
+		return
+	}
+	return
 }
 
 func AutoConnect() (db *sqlx.DB, err error) {
 	envLoc := flag.String("env", ".env", "")
 	flag.Parse()
 	config := Config{}
-	if err = zconfig.New(zconfig.Defaults(), zconfig.Env(*envLoc, "/var/www/trellis-api/.env")).Apply(&config); err != nil {
+	if err = zconfig.New(zconfig.Env(*envLoc, "/var/www/trellis-api/.env"), zconfig.Defaults()).Apply(&config); err != nil {
 		return
 	}
 	return Connect(config.DB)
