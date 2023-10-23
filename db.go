@@ -46,3 +46,36 @@ func AutoConnect() (db *sqlx.DB, err error) {
 	}
 	return Connect(config.DB)
 }
+
+func LoadTranslations(db *sqlx.DB, ids ...string) (translations map[string]*Translation, err error) {
+	if len(ids) == 0 {
+		return
+	}
+	query, args, err := sqlx.In(`SELECT * FROM translation WHERE id IN (?)`, ids)
+	if err != nil {
+		return
+	}
+	ts := []Translation{}
+	query = db.Rebind(query)
+	err = db.Select(&ts, query, args...)
+	texts := []TranslationText{}
+	query, args, err = sqlx.In(`SELECT * FROM translation_text WHERE translation_id IN (?)`, ids)
+	if err != nil {
+		return
+	}
+	if err = db.Select(&texts, query, args...); err != nil {
+		return
+	}
+	translations = make(map[string]*Translation, len(ts))
+	for _, tt := range texts {
+		for i := range ts {
+			if ts[i].Id == tt.TranslationId {
+				ts[i].TranslationTexts = append(ts[i].TranslationTexts, tt)
+			}
+		}
+	}
+	for _, t := range ts {
+		translations[t.Id] = &t
+	}
+	return
+}
