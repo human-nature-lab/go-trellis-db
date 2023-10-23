@@ -1,4 +1,4 @@
-module github.com/human-nature-lab/go_trellis_db
+module github.com/human-nature-lab/go-trellis-db
 
 go 1.18
 
