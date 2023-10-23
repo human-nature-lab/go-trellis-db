@@ -1,4 +1,4 @@
-package go_trellis_db
+package main
 
 import (
 	"database/sql"
