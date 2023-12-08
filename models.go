@@ -172,6 +172,19 @@ type ConditionTag struct {
 	DeletedAt LaravelNullTime `db:"deleted_at" json:"deleted_at"`
 }
 
+type Respondent struct {
+	Id                     string          `db:"id" json:"id"`
+	Name                   string          `db:"name" json:"name"`
+	AssignedId             zsql.NullString `db:"assigned_id" json:"assigned_id"`
+	GeoId                  zsql.NullString `db:"geo_id" json:"geo_id"`
+	Notes                  zsql.NullString `db:"notes" json:"notes"`
+	GeoNotes               zsql.NullString `db:"geo_notes" json:"geo_notes"`
+	AssociatedRespondentId zsql.NullString `db:"associated_respondent_id" json:"associated_respondent_id"`
+	CreatedAt              LaravelNullTime `db:"created_at" json:"created_at"`
+	UpdatedAt              LaravelNullTime `db:"updated_at" json:"updated_at"`
+	DeletedAt              LaravelNullTime `db:"deleted_at" json:"deleted_at"`
+}
+
 type RespondentName struct {
 	Id                       string          `db:"id" json:"id"`
 	IsDisplayName            bool            `db:"is_display_name" json:"is_display_name"`
