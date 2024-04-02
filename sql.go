@@ -30,7 +30,7 @@ func writeEdgeInsert(out io.Writer, chunk []Edge) (err error) {
 			}
 		}
 	}
-	_, err = fmt.Fprintln(out, ";\n")
+	_, err = fmt.Fprintf(out, ";\n\n")
 	return
 }
 
@@ -52,7 +52,7 @@ func writePreloadInsert(out io.Writer, chunk []PreloadAction, questionId string)
 			}
 		}
 	}
-	_, err = fmt.Fprintln(out, ";\n")
+	_, err = fmt.Fprintf(out, ";\n\n")
 	return
 }
 

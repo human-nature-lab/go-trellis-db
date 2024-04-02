@@ -10,6 +10,12 @@ github.com/mattn/go-sqlite3 v1.14.6/go.mod h1:NyWgC/yNuGj7Q9rpYnZvas74GogHl5/Z4A
 github.com/mattn/go-sqlite3 v1.14.12 h1:TJ1bhYJPV44phC+IMu1u2K/i5RriLTPe+yc68XDJ1Z0=
 github.com/wyattis/z v0.10.12 h1:/3ZEgmUeQ9x/BkiKcMaFAyR0BU7LPZlt2ZQQUUg+DlI=
 github.com/wyattis/z v0.10.12/go.mod h1:RYIzAAiec5g6wGiZMn1+vhPm8Br6UYw4rFptunYRXxk=
+github.com/wyattis/z v0.12.2 h1:Y67jCbaTMLCIF//yGYlDWC///IDudPmXo+k77jXS7EM=
+github.com/wyattis/z v0.12.2/go.mod h1:+1Wf06HqxHkLysogDupWqxXvAib08uxQrEtn5BA6eRE=
+github.com/wyattis/z v0.12.3 h1:qI6YOCN6sGDaxUhiJffIL/ollKNdFToqU9xd8Q4EpZo=
+github.com/wyattis/z v0.12.3/go.mod h1:+1Wf06HqxHkLysogDupWqxXvAib08uxQrEtn5BA6eRE=
+github.com/wyattis/z v0.12.5 h1:hsYlV8RTxU4cdYfYrcN1qdM3O1X2ijrSKuTP+ozCRH4=
+github.com/wyattis/z v0.12.5/go.mod h1:+1Wf06HqxHkLysogDupWqxXvAib08uxQrEtn5BA6eRE=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
