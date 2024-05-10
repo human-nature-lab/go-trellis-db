@@ -276,3 +276,15 @@ type TranslationText struct {
 	UpdatedAt      LaravelNullTime `db:"updated_at" json:"updated_at"`
 	DeletedAt      LaravelNullTime `db:"deleted_at" json:"deleted_at"`
 }
+
+type Asset struct {
+	Id        string          `db:"id" json:"id"`
+	FileName  string          `db:"file_name" json:"file_name"`
+	Md5Hash   string          `db:"md5_hash" json:"md5_hash"`
+	Size      int             `db:"size" json:"size"`
+	Type      string          `db:"type" json:"type"`
+	MimeType  string          `db:"mime_type" json:"mime_type"`
+	CreatedAt LaravelNullTime `db:"created_at" json:"created_at"`
+	UpdatedAt LaravelNullTime `db:"updated_at" json:"updated_at"`
+	DeletedAt LaravelNullTime `db:"deleted_at" json:"deleted_at"`
+}

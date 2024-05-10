@@ -9,8 +9,18 @@ import (
 	"github.com/wyattis/z/zconfig"
 )
 
+type WebConfig struct {
+	Root string
+}
+
+type StorageConfig struct {
+	Root string
+}
+
 type Config struct {
-	DB DBConfig
+	Web     WebConfig
+	Storage StorageConfig
+	DB      DBConfig
 }
 
 type DBConfig struct {
