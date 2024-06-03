@@ -64,6 +64,8 @@ func CreateAsset(assetRoot string, db *sqlx.DB, file io.Reader, fileName string,
 	asset.MimeType = mime.TypeByExtension(filepath.Ext(fileName))
 	asset.Type = string(MimeToType(asset.MimeType))
 	asset.Size = int(size)
+	asset.CreatedAt = LaravelNow()
+	asset.UpdatedAt = LaravelNow()
 
 	sum := md5.New()
 	reader := io.TeeReader(file, sum)

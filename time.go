@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+func LaravelNow() LaravelNullTime {
+	return LaravelNullTime{Time: time.Now(), Valid: true}
+}
+
 const LARAVEL_FORMAT = "2006-01-02 15:04:05"
 
 type LaravelNullTime sql.NullTime
